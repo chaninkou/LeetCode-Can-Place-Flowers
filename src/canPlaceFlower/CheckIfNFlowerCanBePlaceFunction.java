@@ -19,6 +19,7 @@ public class CheckIfNFlowerCanBePlaceFunction {
 				// Only if there is count of 3 or more to able to plant a flower
 				openSpot += (count - 1)/2;
 				
+				// update count
 				count = 0;
 			}
 		}
@@ -31,4 +32,39 @@ public class CheckIfNFlowerCanBePlaceFunction {
 		// return true if you could at least plant n amount of flower 
 		return openSpot >= n;
 	}
+	
+	// A longer solution I made, but it's still o(n) time
+    public boolean canPlaceFlowers2(int[] flowerbed, int n) {    
+        int len = flowerbed.length;
+        
+        // Checking edge cases, ex: [0], [1], [0,1]
+        if(len <= 2){
+            if(flowerbed[0] == 0 && len == 1 || flowerbed[0] == 0 && flowerbed[1] != 1){
+               n--; 
+            }
+            return n <= 0;
+        }
+
+        // [0,0]
+        if (flowerbed[0] == 0 && flowerbed[1] == 0){
+                flowerbed[0] = 1;
+                n--;
+        }     
+        
+        // [1,0,0]
+        if (flowerbed[len - 1] == 0 && flowerbed[len - 2] == 0){
+                flowerbed[len - 1] = 1;
+                n--;
+        }  
+        
+        // [1,0,0,0,1]
+        for(int i = 1; i < flowerbed.length; i++){
+            if(flowerbed[i - 1] == 0 && flowerbed[i] == 0 && flowerbed[i + 1] == 0 && i != 1){
+                flowerbed[i] = 1;
+                n--;
+            }           
+        }
+        
+        return n <= 0;
+    }
 }
