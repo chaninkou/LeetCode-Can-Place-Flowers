@@ -1,4 +1,4 @@
-package canPlaceFlower;
+package leetcode605;
 
 public class CheckIfNFlowerCanBePlaceFunction {
 	public boolean canPlaceFlowers(int[] flowerbed, int n) {

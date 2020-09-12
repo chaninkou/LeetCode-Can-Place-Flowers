@@ -1,4 +1,4 @@
-package canPlaceFlower;
+package leetcode605;
 
 import java.util.Arrays;
 
